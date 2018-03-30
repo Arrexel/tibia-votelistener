@@ -1,3 +1,5 @@
+![otservers.org vote listener](https://otservers.org/img/votelistener.png)
+
 # How it works
 tibia-votelistener is a standalone program that runs on the same machine as your Tibia server. It listens for vote notifications from [otservers.org](https://otservers.org), and then rewards the player who voted.
 
