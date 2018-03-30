@@ -87,10 +87,10 @@ end
 ```
 
 ## Customizing vote rewards
-Customizing vote rewards is dead simple. Simply add the rewards to the `giveReward()` function. 
+Customizing vote rewards is very easy. Simply add the rewards to the `giveReward()` function. 
 
 ### Example (give items)
-Gives the player 10 earth. Refer to `data/items/items.xml` for a list of all item IDs.
+Gives the player 10x earth. Refer to `data/items/items.xml` for a list of all item IDs.
 ```
 function giveReward(player)
     player:addItem(101, 10)
