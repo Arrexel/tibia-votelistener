@@ -1,13 +1,15 @@
-## How it works
-tibia-votelistener is a standalone program that runs on the same machine as your Tibia server. It listens for vote notifications from otservers.org, and then rewards the player who voted.
+# How it works
+tibia-votelistener is a standalone program that runs on the same machine as your Tibia server. It listens for vote notifications from [otservers.org](https://otservers.org), and then rewards the player who voted.
 
-## Download
+# Download
 - Windows: unreleased
 - Linux: unreleased
-- Cross-platform (Python): https://github.com/Arrexel/tibia-votelistener/blob/master/src/VoteListener.py
+- Cross-platform (Python): [src/VoteListener.py](https://github.com/Arrexel/tibia-votelistener/blob/master/src/VoteListener.py)
 
-## Installation
+# Installation
 Installation is very easy. Simply run the executable file (or if using the Python script, run it with `python VoteListener.py`) and a `VoteListener.ini` file will be generated in the same folder.
+
+## Configuring VoteListener.ini
 
 ```
 [LANGUAGE]
@@ -21,7 +23,7 @@ ip = 192.168.204.161
 port = 7272
 key = YOUR_KEY_HERE
 ```
-This is the IP and Port the vote listener will use. Normally you will want to enter your public IP address (not localhost or 127.0.0.1). The key can be obtained from your otservers.org control panel.
+This is the IP and Port the vote listener will use. Normally you will want to enter your public IP address (not localhost or 127.0.0.1). The key can be obtained from your [otservers.org](https://otservers.org) control panel.
 
 ```
 [TIBIA DATABASE]
