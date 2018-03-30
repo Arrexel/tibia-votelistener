@@ -15,20 +15,20 @@ Installation is very easy. Simply run the executable file (or if using the Pytho
 
 ## Configuring VoteListener.ini
 
+Set the language of the vote listener. `en` for English and `pr` for Portuguese.
 ```
 [LANGUAGE]
 lang = en
 ```
-Set the language of the vote listener. `en` for English and `pr` for Portuguese.
-
+This is the IP and Port the vote listener will use. Normally you will want to enter your public IP address (not localhost or 127.0.0.1). The key can be obtained from your [otservers.org](https://otservers.org) control panel.
 ```
 [VOTE LISTENER]
 ip = 192.168.204.161
 port = 7272
 key = YOUR_KEY_HERE
 ```
-This is the IP and Port the vote listener will use. Normally you will want to enter your public IP address (not localhost or 127.0.0.1). The key can be obtained from your [otservers.org](https://otservers.org) control panel.
 
+Enter your Tibia server database connection information. A table named `player_votes` will be created automatically and used to store votes. If you are not running multiple servers on the same machine, leave the `table_prefix` blank.
 ```
 [TIBIA DATABASE]
 username = root
@@ -39,10 +39,14 @@ port = 3306
 table_prefix =
 ```
 
-Enter your Tibia server database connection information. A table named `player_votes` will be created automatically and used to store votes. If you are not running multiple servers on the same machine, leave the `table_prefix` blank.
 
 ## Adding the Lua script
-Create the file `data/talkactions/scripts/votelistener.lua` and add the following code to it. This script allows users to check for queued vote rewards using the `!vote` command, and also handles which rewards the player will receive.
+Open `data/talkactions/talkactions.xml` and add the following line.
+```
+<talkaction words="!vote" script="votelistener.lua" />
+```
+
+Create the file `data/talkactions/scripts/votelistener.lua` and add the following code to it. This script allows users to check for queued vote rewards using the `!vote` command, and also handles which rewards the player will receive. If the player does not have any vote rewards queued, they will be given a link to vote for the server.
 
 ```
 function giveReward(player)
@@ -82,9 +86,13 @@ function onSay(player, words, param)
 end
 ```
 
-Open `data/talkactions/talkactions.xml` and add the following line.
-```
-<talkaction words="!vote" script="votelistener.lua" />
-```
+## Customizing vote rewards
+Customizing vote rewards is dead simple. Simply add the rewards to the `giveReward()` function. 
 
-
+### Example (give items)
+Gives the player 10 earth. Refer to `data/items/items.xml` for a list of all item IDs.
+```
+function giveReward(player)
+    player:addItem(101, 10)
+end
+```
